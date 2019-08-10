@@ -2,7 +2,7 @@
 
 ----
 ## About
-See [15-112 Project Gallery](https://en.wikipedia.org/wiki/Markdown)
+See [15-112 Project Gallery](http://www.krivers.net/15112-f18/gallery.html)
 
 My 15-112 Project is a online multiplayer Monopoly game. It is meant to be played
 on a server run on a personal computer and can host up to 4 clients on a single

@@ -5,14 +5,20 @@
 # adapted by Kyle Chin
 #############################
 
+import sys
 import pygame
 import socket
 import threading
 from queue import Queue
 
-HOST = "" # put your IP address here if playing on multiple computers
+if (len(sys.argv)) == 1: 
+  HOST = "" # Server can now only be accessed on this machine
+else:
+  HOST = str(sys.argv[1]) # IP address that the user must supply when running the python file
 PORT = 50003
 BACKLOG = 4
+
+print(HOST)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST,PORT))

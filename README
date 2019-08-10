@@ -1,22 +1,24 @@
+# 15-112 Term Project - Online Monopoly
+
+----
+## About
+See [15-112 Project Gallery](https://en.wikipedia.org/wiki/Markdown)
+
 My 15-112 Project is a online multiplayer Monopoly game. It is meant to be played
 on a server run on a personal computer and can host up to 4 clients on a single
-match. The rules of the game are slightly modified from that of the original
+match. 
+
+The rules of the game are slightly modified from that of the original
 monopoly in order to suit a more cutthroat and less forgiving style of gameplay.
 Not buying a property will put it on an auction, chance now teleports you a
 random number of spaces, the community chest will either give you or fine you
 several hundred dollars, and has a small chance to give you an unowned property.
 Also going to jail now doesn't make you miss a turn, rather it just fines you.
 
-To run this game you will essentially have to install everything in my TP folder
-other than the design proposal file. The server file sets up the server that
-the clients connect to, and the client file runs all the logic and GUI of the
-game. The pictures for the pieces and other decorations I put in the game are
-all saved as pngs in the folder as well. Lastly, it is crucial to have the
-"saves.json" file in the folder named exactly like that so that you can save
-unfinished matches.
 
-To run the game, first open your terminal on the computer that you want to run
-the server, set your HOST variable (line 12) equal to your IP address, and run
-the server file. Then, use the same IP address for the HOST variable (line 20)
-on any of the client files, and then run them. Make sure you do not start the
-game on any client before all clients have joined.
+----
+## Installation and Setup
+1. Download the whole repo
+2. Run the server.py file, including the IP address you plan to play on as an argument in the command line
+3. Run the client.py file, including the same IP address as an argument
+4. Further instructions can be found in the game's help section

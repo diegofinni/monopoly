@@ -14,9 +14,15 @@
 # adapted by Kyle Chin
 #############################
 
+import sys
 import socket
 import threading
 from queue import Queue
+
+if (len(sys.argv)) == 1: 
+  HOST = "localhost" # Server can now only be accessed on this machine
+else:
+  HOST = str(sys.argv[1]) # IP address that the user must supply when running the python file
 
 HOST = "localhost" # put your IP address here if playing on multiple computers
 PORT = 50003
@@ -55,13 +61,13 @@ RED = (255,0,0)
 BLUE = (0,0,255)
 GREEN = (0,255,0)
 playerSize = (40, 40)
-filename = "saves.json"
+filename = "other/saves.json"
 pygame.mixer.init()
-clickFX = pygame.mixer.Sound("click.wav")
-diceFX = pygame.mixer.Sound("dice.wav")
-moneyFX = pygame.mixer.Sound("money.wav")
-whistleFX = pygame.mixer.Sound("whistle.wav")
-themeFX = pygame.mixer.music.load("theme.mp3")
+clickFX = pygame.mixer.Sound("sounds/click.wav")
+diceFX = pygame.mixer.Sound("sounds/dice.wav")
+moneyFX = pygame.mixer.Sound("sounds/money.wav")
+whistleFX = pygame.mixer.Sound("sounds/whistle.wav")
+themeFX = pygame.mixer.music.load("sounds/theme.mp3")
 pygame.mixer.music.play()
 pygame.mixer.music.set_volume(0.2)
 
@@ -78,7 +84,7 @@ class Player(object):
         self.priority = len(Player.allPlayers)
         self.position = 0
         self.coords = [740, 740] # Coordinates of the "Go" position
-        piece = pygame.image.load("player_%s.png" %self.name)
+        piece = pygame.image.load("images/player_%s.png" %self.name)
         scaledPiece = pygame.transform.scale(piece, playerSize)
         self.piece = scaledPiece
         self.ready = False
@@ -166,14 +172,14 @@ class Monopoly(object):
 
     def drawStartScreen(self, screen):
         screen.fill((255,0,0))
-        image = pygame.image.load("logo.png")
+        image = pygame.image.load("images/logo.png")
         screen.blit(image, (10,10))
         self.drawText(screen, 100, "Press 'S' to Begin!", WHITE, 200, 500)
         self.drawText(screen, 60, "Press 'h' for help", WHITE, 400, 670)
 
     def drawHelpScreen(self, screen):
         screen.fill(RED)
-        image = pygame.image.load("logo.png")
+        image = pygame.image.load("images/logo.png")
         screen.blit(image, (10,10))
         self.drawText(screen, 20, "This version of monopoly has modified rules to suit a faster-paced style of gampeplay. Modifications include:", WHITE, 100, 400)
         self.drawText(screen, 20, "- Community chest now either gives cash or a card", WHITE, 100, 425)
@@ -187,7 +193,7 @@ class Monopoly(object):
         self.drawText(screen, 60, "Press 'h' for return", WHITE, 400, 670)
 
     def drawLobbyScreen(self, screen):
-        image = pygame.image.load("logo.png")
+        image = pygame.image.load("images/logo.png")
         screen.blit(image, (10,10))
         pygame.draw.rect(screen, RED, (1050, 430, 240, 220))
         pygame.draw.rect(screen, WHITE, (1060, 440, 220, 200))
@@ -220,7 +226,7 @@ class Monopoly(object):
         self.drawBuildings(screen)
 
     def drawBoard(self, screen):
-        board = pygame.image.load("monopoly.jpg")
+        board = pygame.image.load("images/monopoly.jpg")
         scaledBoard = pygame.transform.scale(board, (800, 800))
         screen.blit(scaledBoard, (0,0))
 
@@ -236,8 +242,8 @@ class Monopoly(object):
     def drawDie(self, screen):
         # These dice are giving me an odd error saying:
         # libpng warning: iCCP: known incorrect sRGB profile
-        dice1 = pygame.image.load("dice_%s.png" %self.dice_1)
-        dice2 = pygame.image.load("dice_%s.png" %self.dice_2)
+        dice1 = pygame.image.load("images/dice_%s.png" %self.dice_1)
+        dice2 = pygame.image.load("images/dice_%s.png" %self.dice_2)
         screen.blit(dice1, (810, 220))
         screen.blit(dice2, (960, 220))
 
